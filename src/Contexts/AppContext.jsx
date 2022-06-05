@@ -1,4 +1,4 @@
-import { createContext, useReducer, useState } from "react";
+import { createContext, useReducer } from "react";
 let initialState = {
   isAuth: false,
   token: null
@@ -15,11 +15,7 @@ function reduce(state, action) {
 export const AppContext = createContext();
 
 export const ContextProvider = ({ children }) => {
-  const [isAuth, setISAuth] = useState(true);
   const [state, dispatch] = useReducer(reduce, initialState);
-  const toggleAuth = () => {
-    setISAuth(true);
-  };
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       {children}

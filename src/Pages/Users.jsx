@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { v4 } from "uuid";
+import { Link } from "react-router-dom";
 const Users = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -18,11 +18,12 @@ const Users = () => {
   return (
     <div>
       {data.map((use) => (
-        <div key={v4}>
+        <div key={use.id}>
           <img src={use.avatar} width="100px" alt="img" />
           <p>
             Name: {use.first_name} {use.last_name}
           </p>
+          <Link to={`/users/${use.id}`}>See More</Link>
         </div>
       ))}
     </div>

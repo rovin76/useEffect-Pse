@@ -4,7 +4,7 @@ import PrivateRoute from "../components/PrivateRoute";
 import Home from "./Home";
 import Login from "./Login";
 import Users from "./Users";
-
+import UsersPage from "./UsersPage";
 function AllRoutes() {
   return (
     <div>
@@ -17,6 +17,14 @@ function AllRoutes() {
           element={
             <PrivateRoute>
               <Users />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/users/:id"
+          element={
+            <PrivateRoute>
+              <UsersPage />
             </PrivateRoute>
           }
         ></Route>
