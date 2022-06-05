@@ -5,7 +5,7 @@ const Users = () => {
 
   useEffect(() => {
     axios({
-      url: "http//reqres.in/api/users",
+      url: "https://reqres.in/api/users",
       method: "GET"
     })
       .then((res) => {
@@ -16,6 +16,17 @@ const Users = () => {
       });
   }, []);
   console.log(data);
-  return <div>Users</div>;
+  return (
+    <div>
+      {data.map((use) => (
+        <div>
+          <img src={use.avatar} width="100px" alt="img" />
+          <p>
+            {use.first_name} {use.last_name}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
 };
 export default Users;
