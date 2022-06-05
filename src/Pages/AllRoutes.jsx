@@ -1,7 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Dashboard from "./Dashboard";
+import PrivateRoute from "../components/PrivateRoute";
 import Home from "./Home";
+import Login from "./Login";
 import Users from "./Users";
 
 function AllRoutes() {
@@ -10,8 +11,15 @@ function AllRoutes() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/login" element={<Dashboard />}></Route>
-        <Route path="/users" element={<Users />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route
+          path="/users"
+          element={
+            <PrivateRoute>
+              <Users />
+            </PrivateRoute>
+          }
+        ></Route>
       </Routes>
     </div>
   );
