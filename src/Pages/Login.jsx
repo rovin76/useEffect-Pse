@@ -6,7 +6,7 @@ import { AppContext } from "../Contexts/AppContext";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
-  const { isAuth, toggleAuth } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     axios({
@@ -19,13 +19,13 @@ function Login() {
     })
       .then((res) => {
         alert("success");
-        toggleAuth();
+        dispatch({ type: "LOGIN_SUCCESS" });
       })
       .catch((res) => {
         console.log("error");
       });
   };
-  if (isAuth) {
+  if (state.isAuth) {
     return <Navigate to="/users" />;
   }
   return (
